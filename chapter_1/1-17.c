@@ -3,9 +3,8 @@
 #define	MAXLINE	1000	/* maximum input line size */
 
 int getlineC(char line[], int maxline);
-void copy(char to[], char from[]);
 
-/* Print all lines greater than or equal to 80 characters. */
+/* Print all lines greater than 80 characters. */
 int main() {
 	int len;	/* current line length */
 	int max;	/* maximum length seen so far */
@@ -14,14 +13,10 @@ int main() {
 
 	max = 0;
 	while ((len = getlineC(line, MAXLINE)) > 0) {
-		if (len > max) {
-			max = len;
-			copy(longest, line);
+		if (len > 80) {
+			printf("%s", line);
 		}
 	}
-
-	if (max > 0)	/* there was a line */
-		printf("%s", longest);
 	
 	return 0;
 }
@@ -39,13 +34,4 @@ int getlineC(char s[], int lim) {
 	}
 	s[i] = '\0';
 	return i;
-}
-
-/* copy: copy 'from' into 'to'; assume to is big enough */
-void copy(char to[], char from[]) {
-	int i;
-
-	i = 0;
-	while ((to[i] = from[i]) != '\0')
-		i++;
 }
