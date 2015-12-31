@@ -20,6 +20,11 @@ int htoi(char s[]) {
 	while (s[length] != '\0')
 		length++;
 
+	/* Small amount of error checking */
+	if (length < 2 || s[0] != '0' || (s[1] != 'x' && s[1] != 'X')) {
+		return -1;
+	}
+
 	for (i = length-1; i > 1; i--) {
 		/* Number */
 		if (s[i] >= '0' && s[i] <= '9') {
