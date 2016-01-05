@@ -6,19 +6,26 @@ void remove_char(char s[], int index);
 
 int main() {
 	char s[] = "hello";
+	char t[] = "hl";
+
+	printf("%s\n", s);
+	squeeze_alt(s, t);
+	printf("%s\n", s);
 	
 	return 0;
 }
 
 /* Delete each character in s1 that matches any character in s2 */
 void squeeze_alt(char s1[], char s2[]) {
-	int i, j;
+	int i;
 
+	i = 0;
 	while (s1[i] != '\0') {
 		if (contains(s2, s1[i])) {
 			remove_char(s1, i);
 		}
-		i++;
+		else
+			i++;
 	}
 }
 
