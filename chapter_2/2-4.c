@@ -1,7 +1,11 @@
 #include <stdio.h>
 
-int main() {
+void squeeze_alt(char s1[], char s2[]);
+int contains(char s[], char c);
+void remove_char(char s[], int index);
 
+int main() {
+	char s[] = "hello";
 	
 	return 0;
 }
@@ -10,12 +14,12 @@ int main() {
 void squeeze_alt(char s1[], char s2[]) {
 	int i, j;
 
-	for (i = j = 0; s[i] != '\0'; i++) {
-		if (s[i] != c) {
-			s[j++] = s[i];
+	while (s1[i] != '\0') {
+		if (contains(s2, s1[i])) {
+			remove_char(s1, i);
 		}
+		i++;
 	}
-	s[j] = '\0';
 }
 
 /* Returns 1 if s contains c, 0 otherwise */
@@ -28,4 +32,19 @@ int contains(char s[], char c) {
 		i++;
 	}
 	return 0;
+}
+
+/* remove the character at the specified index */
+void remove_char(char s[], int index) {
+	int i, j;
+
+	i = j = 0;
+	while (s[j] != '\0') {
+		if (j == index)
+			j++;
+		s[i] = s[j];
+		i++;
+		j++;
+	}
+	s[i] = '\0';
 }
